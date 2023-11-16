@@ -2,11 +2,11 @@
 
 This repository includes scripts, data and figures that have been generated and used in the study `mtDNA “Nomenclutter” and its Consequences on the Interpretation of Genetic Data`.
 
-## Developers: 
+**Developers:** 
 Vladimir Bajić and Vanessa Hava Schulmann
 
-## Affiliation:
-Human Biology and Primate Evolution, Freie Universität Berlin, Berlin, Germany
+**Affiliation:**
+[Human Biology and Primate Evolution, Freie Universität Berlin, Berlin, Germany](https://www.bcp.fu-berlin.de/en/biologie/arbeitsgruppen/zoologie/ag_nowick/index.html)
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -20,10 +20,10 @@ Human Biology and Primate Evolution, Freie Universität Berlin, Berlin, Germany
 | mtDNA Ref | `data/RSRS.fasta.gz`          | https://www.cell.com/cms/10.1016/j.ajhg.2012.03.002/attachment/34f040af-c97e-4bfa-854b-d2238be91d2e/mmc2.zip |
 | Data      | `mtDNA_1kgp.fasta.gz`         | http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/MT/chrMT_sequences_2534.20160505.fasta.gz |
 
-1. We downloaded fasta file with full mitochondrial sequences from the 1000 Genomes Project.
-2. We extracted 660 individuals free of relatives belonging to seven African Ancestry populations (ACB - African Caribbean in Barbados; ASW - African Ancestry in SW USA; MSL - Mende in Sierra Leone; GWD - Gambian in Western Division - Mandinka; ESN -	Esan in Nigeria; YRI - Yoruba in Ibadan, Nigeria; LWK - Luhya in Webuye, Kenya)
-4. The revised Cambridge Reference Sequence (rCRS) was added as a reference for multiple sequence alignment. 
-5. The Reconstructed Sapiens Reference Sequence (RSRS) for rooting the phylogenetic tree. 
+- We downloaded fasta file with full mitochondrial sequences from the 1000 Genomes Project.
+- We extracted 660 individuals free of relatives belonging to seven African Ancestry populations (ACB - African Caribbean in Barbados; ASW - African Ancestry in SW USA; MSL - Mende in Sierra Leone; GWD - Gambian in Western Division - Mandinka; ESN -	Esan in Nigeria; YRI - Yoruba in Ibadan, Nigeria; LWK - Luhya in Webuye, Kenya)
+- The revised Cambridge Reference Sequence (rCRS) was added as a reference for multiple sequence alignment. 
+- The Reconstructed Sapiens Reference Sequence (RSRS) for rooting the phylogenetic tree. 
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -113,20 +113,20 @@ haplogrep3 classify \
 --out out/haplogrep3/1KGP_rCRS_RSRS_norelatives_nopolyc_NMreplaced_noGaps-haplogrep3_phylotree-fu-rcrs-1.2
 ```
 
-## NBG
-Based on the output of HaploGrep3 we created two commonly occurring secondary NBGs: SC and SCL in R (see `scripts/make_all_metadata.R`).
+## Nomenclature-Based Groupings (NBG)
+Based on the output of HaploGrep3 we created two commonly occurring secondary NBGs: Single Character grouping (SC) and Single Character and L with one digit grouping (SCL) in R (see `scripts/make_all_metadata.R`).
 
-## ABG
+## Algorithm-Based Groupings (ABG)
 To obtain mitochondrial groupings based on mtDNA sequence similarity independent of traditional nomenclature, we performed two ABGs: rhierBAPS and TreeCluster.
 
-### rhierBAPS
+### rhierBAPS (rhb)
 The rhierBAPS groupings (rhb) were performed directly on MSA FASTA using the R package `rhierBAPS`. The rhierBAPS analysis was run with `keep.singletons=TRUE`, `max.depth=10`, and the default value for `n.pop`. For visualization purposes, we focussed on the first 3 levels of the rhierBAPS output.
 
 ```bash
 Rscript --vanilla scripts/rhierBAPS.R
 ```
 
-### TreeCluster
+### TreeCluster (tc)
 The TreeCluster groupings (tc) were performed on the mtDNA consensus trees outputted by the `IQ-TREE` using the command line program `TreeCluster` with eight different threshold values (`-t`) ranging from 0.001 to 0.008, and method (`-m`) set to its default: `max_clade`. The Max Clade method of TreeCluster clusters the leaves of the provided phylogenetic tree ensuring that the maximum pairwise distance between leaves in the cluster is at most equal to the specified threshold. For visualization purposes, we focussed on the output of TreeCluster with threshold values 0.003-0.006.
 
 ```bash
@@ -161,7 +161,7 @@ Violin plots of the mtDNA pairwise distances between individuals belonging to th
 
 ------------------------------------------------------------------------------------------------------------------------
 
-# Map
+# Geographic map
 The geographic map with populations was created using R packages `rworldmap` and `tidyverse` (See `scripts/Fig_2_MDS_and_Map.R`).
 
 ------------------------------------------------------------------------------------------------------------------------
