@@ -1,6 +1,6 @@
 # mtDNA “Nomenclutter” and its Consequences on the Interpretation of Genetic Data
 
-This repository includes scripts, data and figures that have been generated and used in the study `mtDNA “Nomenclutter” and its Consequences on the Interpretation of Genetic Data`.
+This repository includes scripts and data necessary to reproduce analyses and figures from the study "mtDNA “Nomenclutter” and its Consequences on the Interpretation of Genetic Data".
 
 **Developers:** 
 Vladimir Bajić and Vanessa Hava Schulmann
@@ -12,22 +12,30 @@ Vladimir Bajić and Vanessa Hava Schulmann
 
 # Data download
 
-| Type      | File                          | url                                                          | 
-|-----------|-------------------------------|--------------------------------------------------------------|
-| Metadata  | `data/igsr_sample.tsv`        | https://www.internationalgenome.org/data-portal/sample       | 
-| Metadata  | `data/igsr_populations.tsv`   | https://www.internationalgenome.org/data-portal/population   |
-| mtDNA Ref | `data/rCRS.fasta.gz`          | http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/MT/rCRS.fasta.gz |
-| mtDNA Ref | `data/RSRS.fasta.gz`          | https://www.cell.com/cms/10.1016/j.ajhg.2012.03.002/attachment/34f040af-c97e-4bfa-854b-d2238be91d2e/mmc2.zip |
-| Data      | `mtDNA_1kgp.fasta.gz`         | http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/MT/chrMT_sequences_2534.20160505.fasta.gz |
-
-- We downloaded fasta file with full mitochondrial sequences from the 1000 Genomes Project.
-- We extracted 660 individuals free of relatives belonging to seven African Ancestry populations (ACB - African Caribbean in Barbados; ASW - African Ancestry in SW USA; MSL - Mende in Sierra Leone; GWD - Gambian in Western Division - Mandinka; ESN -	Esan in Nigeria; YRI - Yoruba in Ibadan, Nigeria; LWK - Luhya in Webuye, Kenya)
-- The revised Cambridge Reference Sequence (rCRS) was added as a reference for multiple sequence alignment. 
-- The Reconstructed Sapiens Reference Sequence (RSRS) for rooting the phylogenetic tree. 
+| Type      | File                               | url                                                                                                             | 
+|-----------|------------------------------------|-----------------------------------------------------------------------------------------------------------------|
+| Metadata  | `igsr_sample.tsv`                  | https://www.internationalgenome.org/data-portal/sample                                                          | 
+| Metadata  | `igsr_populations.tsv`             | https://www.internationalgenome.org/data-portal/population                                                      |
+| Metadata  | `20140625_related_individuals.txt` | http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/20140625_related_individuals.txt                     |
+| mtDNA Ref | `rCRS.fasta.gz`                    | http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/MT/rCRS.fasta.gz                          |
+| mtDNA Ref | `RSRS.fasta.gz`                    | https://www.cell.com/cms/10.1016/j.ajhg.2012.03.002/attachment/34f040af-c97e-4bfa-854b-d2238be91d2e/mmc2.zip    |
+| Data      | `mtDNA_1kgp.fasta.gz`              | http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/MT/chrMT_sequences_2534.20160505.fasta.gz |
 
 ------------------------------------------------------------------------------------------------------------------------
 
-# Removing relative
+# Making input fasta file
+
+We downloaded fasta file with full mitochondrial sequences from the 1000 Genomes Project. Then we added to it rCRS and RSRS sequences and named it `data/1KGP_rCRS_RSRS.fasta`.
+
+> Note:<br/> 
+    The revised Cambridge Reference Sequence (**rCRS**) was added as a reference for multiple sequence alignment.<br/> 
+    The Reconstructed Sapiens Reference Sequence (**RSRS**) for rooting the phylogenetic tree. 
+
+------------------------------------------------------------------------------------------------------------------------
+
+# Removing relatives
+
+Remove one of the individuals from the known related pairs based on the information from `20140625_related_individuals.txt`.
 
 ```bash
 Rscript --vanilla scripts/remove_relatives.R
