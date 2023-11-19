@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/679718318.svg)](https://zenodo.org/doi/10.5281/zenodo.10156922)
+
 # mtDNA “Nomenclutter” and its Consequences on the Interpretation of Genetic Data
 
 This repository includes scripts and data necessary to reproduce analyses and figures from the study "mtDNA “Nomenclutter” and its Consequences on the Interpretation of Genetic Data".
